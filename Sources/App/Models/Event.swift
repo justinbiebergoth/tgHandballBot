@@ -4,7 +4,7 @@ import Vapor
 
 
 final class Event: Model {
-    static let schema = "event"
+    static let schema = "events"
     
     @ID(key: .id)
     var id: UUID?
@@ -12,6 +12,14 @@ final class Event: Model {
     
     @Enum(key: "type")
     var sex : type
+    
+    @Parent(key: "place_id")
+    var place : Place
+    
+    
+
+    @Field(key: "event_date")
+    var eventDate : Date?
     
     @Timestamp(key: "created_at", on: .create)
     var createdAt: Date?
@@ -21,18 +29,10 @@ final class Event: Model {
    
     @Timestamp(key: "deleted_at", on: .delete)
     var deletedAt: Date?
+
     
-    @Field(key: "place_id")
-    var placeId : Int
-    
-    @Field(key: "players_id")
-    var playersId : Int
-    
-    @Field(key: "event_date")
-    var eventDate : Date?
-    
-    @Siblings(through: EventPlayer.self, from: \.$eventId, to: \.$playersId)
-        public var tags: [Player]
+    @Siblings(through: EventPlayer.self, from: \.$event, to: \.$player)
+        public var players: [Player]
     
     init() { }
     init(
@@ -41,15 +41,14 @@ final class Event: Model {
             createdAt: Date?,
             updatedAt: Date?,
             deletedAt: Date?,
-            placeId : Int,
+            place : Int,
             eventDate : Date?
         ) {
             self.id = id
             self.sex = sex
             self.createdAt = createdAt
             self.deletedAt = deletedAt
-            self.placeId = placeId
-            self.playersId = playersId
+            self.place = place
             self.eventDate = eventDate
         }
 }

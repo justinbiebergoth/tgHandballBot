@@ -6,14 +6,14 @@ import Vapor
 
 
 final class Player: Model {
-    static let schema = "player"
+    static let schema = "players"
     
     @ID(key: .id)
     var id: UUID?
     
     
     @Field(key: "tg_name")
-    var name: String
+    var tgName: String
     
     @Enum(key: "sex")
     var sex : Gender
@@ -21,13 +21,13 @@ final class Player: Model {
     @Enum(key: "role")
     var role: Role
     
-    @Field(key: "name")
+    @Field(key: "player_name")
     var playerName : String
     
     @Field(key: "date_of_b")
     var dateOfB: Date?
     
-    @Parent(key: "teams_id")
+    @Parent(key: "team_id")
     var team: Team
 
     
@@ -40,13 +40,13 @@ final class Player: Model {
     @Timestamp(key: "deleted_at", on: .delete)
     var deletedAt: Date?
     
-    @Siblings(through: EventPlayer.self, from: \.$playersId, to: \.$eventId)
-        public var tags: [Event]
+    @Siblings(through: EventPlayer.self, from: \.$player, to: \.$event)
+        public var events: [Event]
     
     init() { }
     init(
             id: UUID?,
-            name: String,
+            tgName: String,
             sex : Gender,
             role: Role,
             playerName : String,
@@ -58,7 +58,7 @@ final class Player: Model {
             
         ) {
             self.id = id
-            self.name = name
+            self.tgName = tgName
             self.sex = sex
             self.role = role
             self.playerName = playerName

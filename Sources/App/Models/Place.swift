@@ -4,6 +4,10 @@ import Vapor
 final class Place: Model {
     static let schema = "places"
     
+    
+    @Children(for: \.$place)
+    var events: [Event]
+    
     @ID(key: .id)
     var id: UUID?
     

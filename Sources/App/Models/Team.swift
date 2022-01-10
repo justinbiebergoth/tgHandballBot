@@ -1,9 +1,4 @@
-//
-//  File.swift
-//  
-//
-//  Created by hiirari on 20.12.2021.
-//
+
 
 import Fluent
 import Vapor
@@ -11,13 +6,13 @@ import Vapor
 
 
 final class Team: Model {
-    static let schema = "team"
+    static let schema = "teams"
     
     @ID(key: .id)
     var id: UUID?
     
-    @Field(key: "name")
-    var name: String
+    @Field(key: "team_name")
+    var teamName: String
        
     @Enum(key: "sex")
     var sex: Gender
@@ -36,7 +31,7 @@ final class Team: Model {
     
     init(
             id: UUID?,
-            name: String,
+            teamName: String,
             sex : Gender,
             createdAt: Date?,
             deletedAt: Date?,
@@ -44,7 +39,7 @@ final class Team: Model {
             
         ) {
             self.id = id
-            self.name = name
+            self.teamName = teamName
             self.sex = sex
             self.createdAt = createdAt
             self.deletedAt = deletedAt

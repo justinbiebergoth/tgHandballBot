@@ -4,16 +4,16 @@ import Vapor
 
 
 final class EventPlayer: Model {
-    static let schema = "EventPlayer"
+    static let schema = "events_players"
     
     @ID(key: .id)
        var id: UUID?
     
-    @Parent(key: "players_id")
-       var playersId: Player
+    @Parent(key: "player_id")
+       var player: Player
 
     @Parent(key: "event_id")
-       var eventId: Event
+       var event: Event
     
     @Field(key: "is_going")
     var isGoing : Bool
@@ -21,10 +21,11 @@ final class EventPlayer: Model {
     
     init() { }
     
-    init(id: UUID? = nil, playersId: Player, eventId: Event) throws {
+    init(id: UUID? = nil, player: Player, event: Event) throws {
             self.id = id
-            self.$playersId.id = try playersId.requireID()
-            self.$eventId.id = try eventId.requireID()
+            self.$player.id = try player.requireID()
+            self.$event.id = try event.requireID()
+            self.isGoing = isGoing
         }
 }
 
