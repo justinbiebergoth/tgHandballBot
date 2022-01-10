@@ -4,9 +4,6 @@ import Vapor
 
 
 
-enum Role : String , Codable {
-    case User, Admin, Admin1
-}
 
 final class Player: Model {
     static let schema = "player"

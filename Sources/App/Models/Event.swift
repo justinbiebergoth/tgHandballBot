@@ -1,9 +1,7 @@
 import Fluent
 import Vapor
 
-enum type: String, Codable {
-    case game, workout
-}
+
 
 final class Event: Model {
     static let schema = "event"
