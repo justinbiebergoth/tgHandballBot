@@ -11,7 +11,7 @@ final class Event: Model {
     
     
     @Enum(key: "type")
-    var sex : type
+    var sex : Gender
     
     @Parent(key: "place_id")
     var place : Place
@@ -37,13 +37,13 @@ final class Event: Model {
     init() { }
     init(
             id: UUID?,
-            sex: type,
+            sex: Gender,
             createdAt: Date?,
             updatedAt: Date?,
             deletedAt: Date?,
             place : Place,
             eventDate : Date?
-        ) {
+        ) throws {
             self.id = id
             self.sex = sex
             self.createdAt = createdAt
