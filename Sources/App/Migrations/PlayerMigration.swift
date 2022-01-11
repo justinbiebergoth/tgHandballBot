@@ -16,7 +16,6 @@ struct PlayerMigration: AsyncMigration {
             .field("player_name", .string, .required )
             .field("date_of_b", .string)
             .field("team_id", .uuid, .required, .references("teams", "id"))
-            .field()
             .field("created_at", .datetime )
             .field("updated_at", .datetime)
             .field("deleted_at", .datetime)
