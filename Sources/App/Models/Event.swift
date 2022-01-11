@@ -41,14 +41,14 @@ final class Event: Model {
             createdAt: Date?,
             updatedAt: Date?,
             deletedAt: Date?,
-            place : Int,
+            place : Place,
             eventDate : Date?
         ) {
             self.id = id
             self.sex = sex
             self.createdAt = createdAt
             self.deletedAt = deletedAt
-            self.place = place
+            self.$place.id  = try place.requireID()
             self.eventDate = eventDate
         }
 }
