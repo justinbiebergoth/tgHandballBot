@@ -10,7 +10,7 @@ final class Event: Model {
     var id: UUID?
     
     
-    @Enum(key: "type")
+    @Enum(key: "sex")
     var sex : Gender
     
     @Parent(key: "place_id")
