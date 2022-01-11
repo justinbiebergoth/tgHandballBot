@@ -15,10 +15,18 @@ struct EnumMigration: AsyncMigration {
             .case("Admin")
             .case("Adminishe")
             .create()
+        
+        _ = try await database.enum("event_type")
+            .case("game")
+            .case("workout")
+            .create()
     }
 
     func revert(on database: Database)
     async throws {
-        return try await database.schema("Role").delete()
+        try await database.schema("role").delete()
+        try await database.schema("event_type").delete()
+        try await database.schema("gender").delete()
+        
     }
 }

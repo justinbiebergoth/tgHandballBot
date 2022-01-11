@@ -31,7 +31,7 @@ final class Player: Model {
     var team: Team
 
     
-    @Timestamp(key: "created_at", on: .create)
+    @Timestteamp(key: "created_at", on: .create)
     var createdAt: Date?
 
     @Timestamp(key: "updated_at", on: .update)

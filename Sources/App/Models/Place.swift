@@ -57,5 +57,5 @@ final class Place: Model {
             self.deletedAt = deletedAt
             self.updatedAt = updatedAt
         }
-        }
+        
 }
