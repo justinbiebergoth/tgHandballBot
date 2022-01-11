@@ -18,7 +18,7 @@ final class Event: Model {
     
     
 
-    @Field(key: "event_date")
+    @OptionalField(key: "event_date")
     var eventDate : Date?
     
     @Timestamp(key: "created_at", on: .create)
@@ -47,6 +47,7 @@ final class Event: Model {
             self.id = id
             self.sex = sex
             self.createdAt = createdAt
+            self.updatedAt = updatedAt
             self.deletedAt = deletedAt
             self.$place.id  = try place.requireID()
             self.eventDate = eventDate

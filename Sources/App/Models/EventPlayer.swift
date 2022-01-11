@@ -21,7 +21,7 @@ final class EventPlayer: Model {
     
     init() { }
     
-    init(id: UUID? = nil, player: Player, event: Event) throws {
+    init(id: UUID? = nil, player: Player, event: Event, isGoing : Bool) throws {
             self.id = id
             self.$player.id = try player.requireID()
             self.$event.id = try event.requireID()

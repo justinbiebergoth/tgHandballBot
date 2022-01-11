@@ -24,7 +24,7 @@ final class Player: Model {
     @Field(key: "player_name")
     var playerName : String
     
-    @Field(key: "date_of_b")
+    @OptionalField(key: "date_of_b")
     var dateOfB: Date?
     
     @Parent(key: "team_id")
