@@ -11,7 +11,7 @@ struct EventMigration: AsyncMigration {
         
             .id()
             .field("sex", gender, .required)
-            .field("place_id", .uuid, .required, .references("place", "id"))
+            .field("place_id", .uuid, .required, .references("places", "id"))
             .field("event_date", .datetime)
             .field("updated_at", .datetime)
             .field("deleted_at", .datetime)
