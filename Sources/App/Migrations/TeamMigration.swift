@@ -11,7 +11,7 @@ struct TeamMigration: AsyncMigration {
         
         try await database.schema("teams")
         .id()
-        .field("name", .string, .required)
+        .field("team_name", .string, .required)
         .field("sex", gender, .required)
         .field("created_at", .datetime )
         .field("updated_at", .datetime)
