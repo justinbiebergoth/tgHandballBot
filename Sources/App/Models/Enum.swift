@@ -11,5 +11,5 @@ enum EventType: String, Codable {
 }
 
 enum Role : String , Codable {
-    case User, Admin, Admin1
+    case User, Admin, Adminishe
 }

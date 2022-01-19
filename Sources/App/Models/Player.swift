@@ -50,7 +50,7 @@ final class Player: Model {
             role: Role,
             playerName : String,
             dateOfB: Date?,
-            team: Team
+            team: Team.IDValue
             
         ) {
             self.tgName = tgName
@@ -58,7 +58,7 @@ final class Player: Model {
             self.role = role
             self.playerName = playerName
             self.dateOfB = dateOfB
-            self.team.id = team
+            self.$team.id = team
         }
     
 }
