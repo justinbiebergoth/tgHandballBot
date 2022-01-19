@@ -59,7 +59,7 @@ services:
     depends_on:
       - db
     command: ["migrate", "--revert", "--yes"]
-    deploy:
+    deploy:в 
       replicas: 0
   db:
     image: postgres:14-alpine

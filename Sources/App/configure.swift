@@ -25,7 +25,19 @@ public func configure(_ app: Application) throws {
     ), as: .psql)
 
     //app.migrations.add(CreateTodo())
-
+    
+    app.migrations.add(EnumMigration())
+    app.migrations.add(TeamMigration())
+    app.migrations.add(PlaceMigration())
+    app.migrations.add(EventMigration())
+    app.migrations.add(PlayerMigration())
+    app.migrations.add(EventPlayerMigration())
+    
+    try app.migrator.setupIfNeeded().wait()
+        try app.migrator.prepareBatch().wait()
+    
     // register routes
     try routes(app)
+    
+    try app.autoMigrate().wait()
 }
