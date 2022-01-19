@@ -38,24 +38,16 @@ final class Place: Model {
     init() { }
     
     init(
-            id: UUID?,
             name: String,
             address: String,
             longitude: Double?,
-            latitude: Double?,
-            createdAt: Date?,
-            deletedAt: Date?,
-            updatedAt: Date?
+            latitude: Double?
             
         ) {
-            self.id = id
             self.name = name
             self.address = address
             self.latitude = latitude
             self.longitude = longitude
-            self.createdAt = createdAt
-            self.deletedAt = deletedAt
-            self.updatedAt = updatedAt
         }
         
 }

@@ -45,28 +45,20 @@ final class Player: Model {
     
     init() { }
     init(
-            id: UUID?,
             tgName: String,
             sex : Gender,
             role: Role,
             playerName : String,
             dateOfB: Date?,
-            team: Team,
-            createdAt: Date?,
-            deletedAt: Date?,
-            updatedAt: Date?
+            team: Team
             
         ) {
-            self.id = id
             self.tgName = tgName
             self.sex = sex
             self.role = role
             self.playerName = playerName
             self.dateOfB = dateOfB
-            self.team = team
-            self.createdAt = createdAt
-            self.deletedAt = deletedAt
-            self.updatedAt = updatedAt
+            self.team.id = team
         }
     
 }

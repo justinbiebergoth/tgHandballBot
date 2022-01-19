@@ -30,20 +30,12 @@ final class Team: Model {
     init() { }
     
     init(
-            id: UUID?,
             teamName: String,
-            sex : Gender,
-            createdAt: Date?,
-            deletedAt: Date?,
-            updatedAt: Date?
+            sex : Gender
             
         ) {
-            self.id = id
             self.teamName = teamName
             self.sex = sex
-            self.createdAt = createdAt
-            self.deletedAt = deletedAt
-            self.updatedAt = updatedAt
         }
     
     

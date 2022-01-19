@@ -36,19 +36,11 @@ final class Event: Model {
     
     init() { }
     init(
-            id: UUID?,
             sex: Gender,
-            createdAt: Date?,
-            updatedAt: Date?,
-            deletedAt: Date?,
             place : Place,
             eventDate : Date?
         ) throws {
-            self.id = id
             self.sex = sex
-            self.createdAt = createdAt
-            self.updatedAt = updatedAt
-            self.deletedAt = deletedAt
             self.$place.id  = try place.requireID()
             self.eventDate = eventDate
         }
