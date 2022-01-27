@@ -12,32 +12,33 @@ final class Player: Model {
     var id: UUID?
     
     
-    @Field(key: "tg_name")
+    @Field(key: .tgName)
     var tgName: String
     
-    @Enum(key: "sex")
+    @Enum(key: .sex)
     var sex : Gender
     
-    @Enum(key: "role")
+    @Enum(key: .role)
     var role: Role
     
-    @Field(key: "player_name")
+    @Field(key: .playerName)
     var playerName : String
     
-    @OptionalField(key: "date_of_b")
+    @OptionalField(key: .dateOfB)
     var dateOfB: Date?
     
-    @Parent(key: "team_id")
+    @Parent(key: .team)
     var team: Team
 
     
-    @Timestamp(key: "created_at", on: .create)
+    @Timestamp(key: .createdAt, on: .create)
     var createdAt: Date?
 
-    @Timestamp(key: "updated_at", on: .update)
+
+    @Timestamp(key: .updatedAt, on: .update)
     var updatedAt: Date?
-   
-    @Timestamp(key: "deleted_at", on: .delete)
+    
+    @Timestamp(key: .deletedAt, on: .delete)
     var deletedAt: Date?
     
     @Siblings(through: EventPlayer.self, from: \.$player, to: \.$event)

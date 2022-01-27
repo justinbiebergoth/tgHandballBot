@@ -10,11 +10,13 @@ struct EventMigration: AsyncMigration {
         try await database.schema("events")
         
             .id()
-            .field("sex", gender, .required)
-            .field("place_id", .uuid, .required, .references("places", "id"))
-            .field("event_date", .datetime)
-            .field("updated_at", .datetime)
-            .field("deleted_at", .datetime)
+            .field( .sex, gender, .required)
+        
+            .field(.eventDate, .datetime)
+        
+            .field(.createdAt, .datetime)
+            .field(.updatedAt, .datetime)
+            .field(.deletedAt, .datetime)
             .create()
     }
     func revert(on database: Database) async throws {

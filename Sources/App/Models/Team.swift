@@ -11,20 +11,20 @@ final class Team: Model {
     @ID(key: .id)
     var id: UUID?
     
-    @Field(key: "team_name")
+    @Field(key: .teamName)
     var teamName: String
        
-    @Enum(key: "sex")
+    @Enum(key: .sex)
     var sex: Gender
       
-    @Timestamp(key: "created_at", on: .create)
+    @Timestamp(key: .createdAt, on: .create)
     var createdAt: Date?
 
 
-    @Timestamp(key: "updated_at", on: .update)
+    @Timestamp(key: .updatedAt, on: .update)
     var updatedAt: Date?
     
-    @Timestamp(key: "deleted_at", on: .delete)
+    @Timestamp(key: .deletedAt, on: .delete)
     var deletedAt: Date?
     
     init() { }

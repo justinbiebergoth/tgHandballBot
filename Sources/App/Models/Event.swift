@@ -10,24 +10,26 @@ final class Event: Model {
     var id: UUID?
     
     
-    @Enum(key: "sex")
+    @Enum(key: .sex)
     var sex : Gender
     
-    @Parent(key: "place_id")
+    @Parent(key: .place)
     var place : Place
     
     
 
-    @OptionalField(key: "event_date")
+    @OptionalField(key: .eventDate)
     var eventDate : Date?
     
-    @Timestamp(key: "created_at", on: .create)
+    
+    @Timestamp(key: .createdAt, on: .create)
     var createdAt: Date?
 
-    @Timestamp(key: "updated_at", on: .update)
+
+    @Timestamp(key: .updatedAt, on: .update)
     var updatedAt: Date?
-   
-    @Timestamp(key: "deleted_at", on: .delete)
+    
+    @Timestamp(key: .deletedAt, on: .delete)
     var deletedAt: Date?
 
     

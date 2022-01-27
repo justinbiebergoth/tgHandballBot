@@ -9,13 +9,13 @@ final class EventPlayer: Model {
     @ID(key: .id)
        var id: UUID?
     
-    @Parent(key: "player_id")
+    @Parent(key: .player)
        var player: Player
 
-    @Parent(key: "event_id")
+    @Parent(key: .event)
        var event: Event
     
-    @Field(key: "is_going")
+    @Field(key: .isGoing)
     var isGoing : Bool
     
     

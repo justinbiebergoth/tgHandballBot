@@ -11,11 +11,11 @@ struct TeamMigration: AsyncMigration {
         
         try await database.schema("teams")
         .id()
-        .field("team_name", .string, .required)
-        .field("sex", gender, .required)
-        .field("created_at", .datetime )
-        .field("updated_at", .datetime)
-        .field("deleted_at", .datetime)
+        .field(.teamName, .string, .required)
+        .field(.sex, gender, .required)
+        .field(.createdAt, .datetime )
+        .field(.updatedAt, .datetime)
+        .field(.deletedAt, .datetime)
         .create()
     }
 

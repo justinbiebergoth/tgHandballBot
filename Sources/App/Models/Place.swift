@@ -11,26 +11,27 @@ final class Place: Model {
     @ID(key: .id)
     var id: UUID?
     
-    @Field(key: "name")
+    @Field(key: .name)
     var name : String
     
-    @Field(key: "address")
+    @Field(key: .address)
     var address : String
     
-    @OptionalField(key: "longitude")
+    @OptionalField(key: .longitude)
     var longitude : Double?
     
-    @OptionalField(key: "latitude")
+    @OptionalField(key: .latitude)
     var latitude : Double?
     
     
-    @Timestamp(key: "created_at", on: .create)
+    @Timestamp(key: .createdAt, on: .create)
     var createdAt: Date?
 
-    @Timestamp(key: "updated_at", on: .update)
+
+    @Timestamp(key: .updatedAt, on: .update)
     var updatedAt: Date?
-   
-    @Timestamp(key: "deleted_at", on: .delete)
+    
+    @Timestamp(key: .deletedAt, on: .delete)
     var deletedAt: Date?
     
     

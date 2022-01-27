@@ -9,18 +9,19 @@ struct PlayerMigration: AsyncMigration {
         let role =  try await database.enum("role").read()
         
         try await database.schema("players")
-            .id()
-            .field("tg_name", .string, .required)
-            .field("sex", gender, .required)
-            .field("role", role, .required)
-            .field("player_name", .string, .required )
-            .field("date_of_b", .string)
-            .field("team_id", .uuid, .required, .references("teams", "id"))
-            .field("created_at", .datetime )
-            .field("updated_at", .datetime)
-            .field("deleted_at", .datetime)
-            .create()
         
+            .id()
+            .field(.tgName, .string, .required)
+            .field(.sex, gender, .required)
+            .field(.role, role, .required)
+            .field(.playerName, .string, .required )
+            .field(.dateOfB, .string)
+            .field(.team, .uuid, .required, .references(.team))
+            .field(.createdAt, .datetime)
+            .field(.updatedAt, .datetime)
+            .field(.deletedAt, .datetime)
+            .create()
+                
         
 
         
