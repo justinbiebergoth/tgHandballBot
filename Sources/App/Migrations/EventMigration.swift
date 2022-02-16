@@ -13,7 +13,7 @@ struct EventMigration: AsyncMigration {
             .field( .sex, gender, .required)
         
             .field(.eventDate, .datetime)
-        
+            .field(.place, .uuid, .required, .references(Place.schema, .id))
             .field(.createdAt, .datetime)
             .field(.updatedAt, .datetime)
             .field(.deletedAt, .datetime)

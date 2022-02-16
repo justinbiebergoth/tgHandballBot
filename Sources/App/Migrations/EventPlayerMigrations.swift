@@ -8,8 +8,8 @@ struct EventPlayerMigration: AsyncMigration {
         try await database.schema("events_players")
         
             .id()
-            .field(.player, .uuid, .required, .references("players", "id"))
-            .field(.event, .uuid, .required, .references("events", "id"))
+            .field(.player, .uuid, .required, .references(Player.schema, .id))
+            .field(.event, .uuid, .required, .references(Event.schema, .id))
             .field(.isGoing, .bool)
             .create()
         
