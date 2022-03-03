@@ -3,6 +3,7 @@
 import Fluent
 import Vapor
 import Foundation
+import Network
 
 extension FieldKey {
     //place
@@ -23,6 +24,7 @@ extension FieldKey {
         
     //player
     static var tgName: Self { "tg_name" }
+    static var tgId: Self {"tg_id"}
     static var role: Self { "role" }
     static var playerName: Self { "player_name" }
     static var dateOfB: Self { "date_of_b" }

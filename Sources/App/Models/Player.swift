@@ -11,6 +11,9 @@ final class Player: Model {
     @ID(key: .id)
     var id: UUID?
     
+    @Field(key: .tgId)
+    var tgId: Int64
+    
     
     @Field(key: .tgName)
     var tgName: String
@@ -47,6 +50,7 @@ final class Player: Model {
     init() { }
     init(
             tgName: String,
+            tgId: Int64,
             sex : Gender,
             role: Role,
             playerName : String,
@@ -55,6 +59,7 @@ final class Player: Model {
             
         ) {
             self.tgName = tgName
+            self.tgId = tgId
             self.sex = sex
             self.role = role
             self.playerName = playerName

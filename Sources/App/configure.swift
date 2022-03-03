@@ -31,6 +31,7 @@ public func configure(_ app: Application) throws {
     app.migrations.add(PlaceMigration())
     app.migrations.add(EventMigration())
     app.migrations.add(PlayerMigration())
+    
     app.migrations.add(EventPlayerMigration())
     
     try app.migrator.setupIfNeeded().wait()

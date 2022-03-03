@@ -14,13 +14,16 @@ final class DefaultBotHandlers {
     static func addHandlers(app: Vapor.Application, bot: TGBotPrtcl) {
         defaultHandler(app: app, bot: bot)
         commandPingHandler(app: app, bot: bot)
+        commandAddAdmin(app: app, bot: bot)
         commandShowButtonsHandler(app: app, bot: bot)
         buttonsActionHandler(app: app, bot: bot)
     }
+    
+    //add handler to
 
     /// add handler for all messages unless command "/ping"
     private static func defaultHandler(app: Vapor.Application, bot: TGBotPrtcl) {
-        let handler = TGMessageHandler(filters: (.all && !.command.names(["/ping"]))) { update, bot in
+        let handler = TGMessageHandler(filters: (.all && !.command.names(["/start"])) && !.command.names(["/addAdmin"])) { update, bot in
             let params: TGSendMessageParams = .init(chatId: .chat(update.message!.chat.id), text: "Success")
             try bot.sendMessage(params: params)
         }
@@ -29,10 +32,22 @@ final class DefaultBotHandlers {
 
     /// add handler for command "/ping"
     private static func commandPingHandler(app: Vapor.Application, bot: TGBotPrtcl) {
-        let handler = TGCommandHandler(commands: ["/ping"]) { update, bot in
-            try update.message?.reply(text: "pong", bot: bot)
-        }
+        let handler = TGCommandHandler(commands: ["/start"]) { update, bot in
+            print(update.updateId)
+            print(bot.botId)
+            print(update.message?.from?.id)
+            
+            try update.message?.reply(text: "u in",  bot: bot)
+                }
         bot.connection.dispatcher.add(handler)
+    }
+    
+    private static func commandAddAdmin (app: Vapor.Application, bot: TGBotPrtcl) {
+        let handler = TGCommandHandler (commands: ["/addAdmin"]) { update, bot in
+                try update.message?.reply(text: "admin was added", bot: bot)
+        }
+            bot.connection.dispatcher.add(handler)
+    
     }
     
     /// add handler for command "/show_buttons" - show message with buttons

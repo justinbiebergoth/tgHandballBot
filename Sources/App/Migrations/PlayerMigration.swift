@@ -12,6 +12,7 @@ struct PlayerMigration: AsyncMigration {
         
             .id()
             .field(.tgName, .string, .required)
+            .field(.tgId, .int64, .required)
             .field(.sex, gender, .required)
             .field(.role, role, .required)
             .field(.playerName, .string, .required )
