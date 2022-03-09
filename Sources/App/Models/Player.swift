@@ -30,8 +30,8 @@ final class Player: Model {
     @OptionalField(key: .dateOfB)
     var dateOfB: Date?
     
-    @Parent(key: .team)
-    var team: Team
+    @OptionalParent(key: .team)
+    var team: Team?
 
     
     @Timestamp(key: .createdAt, on: .create)
@@ -55,7 +55,7 @@ final class Player: Model {
             role: Role,
             playerName : String,
             dateOfB: Date?,
-            team: Team.IDValue
+            team: Team.IDValue?
             
         ) {
             self.tgName = tgName

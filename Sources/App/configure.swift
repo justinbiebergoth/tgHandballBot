@@ -32,6 +32,19 @@ public func configure(_ app: Application) throws {
     app.migrations.add(EventMigration())
     app.migrations.add(PlayerMigration())
     
+    
+    Task {
+        print(1)
+        do {try await addAdmin(app)
+        print(2)
+    }
+        catch {
+                    throw(error)
+                }
+    }
+    
+    
+
     app.migrations.add(EventPlayerMigration())
     
     try app.migrator.setupIfNeeded().wait()
@@ -41,4 +54,19 @@ public func configure(_ app: Application) throws {
     try routes(app)
     
     try app.autoMigrate().wait()
+    
+    
+    
+    
+    
+     
 }
+
+func addAdmin(_ app: Application)async throws {
+    print(3)
+    let player = Player(tgName: "@justinbiebergoth", tgId: 1720724845, sex: .female, role: .Adminishe, playerName: "hii", dateOfB: nil, team: nil)
+    try await player.save(on: app.db)
+
+    print(4)
+}
+
