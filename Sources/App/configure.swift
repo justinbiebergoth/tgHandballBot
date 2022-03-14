@@ -64,8 +64,12 @@ public func configure(_ app: Application) throws {
 
 func addAdmin(_ app: Application)async throws {
     print(3)
-    let player = Player(tgName: "@justinbiebergoth", tgId: 1720724845, sex: .female, role: .Adminishe, playerName: "hii", dateOfB: nil, team: nil)
+    
+    let dateOfB = "22.01.1992".stringToDate()
+    let player = Player(tgName: "@justinbiebergoth", tgId: 1720724845, sex: .female, role: .Adminishe, playerName: "hii", dateOfB: dateOfB, team: nil)
+    
     try await player.save(on: app.db)
+    
 
     print(4)
 }

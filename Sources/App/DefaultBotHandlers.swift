@@ -33,9 +33,7 @@ final class DefaultBotHandlers {
     /// add handler for command "/ping"
     private static func commandPingHandler(app: Vapor.Application, bot: TGBotPrtcl) {
         let handler = TGCommandHandler(commands: ["/start"]) { update, bot in
-            print(update.updateId)
-            print(bot.botId)
-            print(update.message?.from?.id)
+         
             
             try update.message?.reply(text: "u in",  bot: bot)
                 }
