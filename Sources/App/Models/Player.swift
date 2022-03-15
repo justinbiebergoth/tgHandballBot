@@ -28,7 +28,7 @@ final class Player: Model {
     var playerName : String
     
     @OptionalField(key: .dateOfB)
-    var dateOfB: Date?
+    var dateOfB: Dateнв?
     
     @OptionalParent(key: .team)
     var team: Team?

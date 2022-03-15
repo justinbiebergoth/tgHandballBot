@@ -61,10 +61,10 @@ public func configure(_ app: Application) throws {
     
      
 }
-
+// создаю вручную админа
 func addAdmin(_ app: Application)async throws {
     print(3)
-    
+    // использую расширение для стринг
     let dateOfB = "22.01.1992".stringToDate()
     let player = Player(tgName: "@justinbiebergoth", tgId: 1720724845, sex: .female, role: .Adminishe, playerName: "hii", dateOfB: dateOfB, team: nil)
     

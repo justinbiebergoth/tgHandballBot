@@ -13,7 +13,7 @@ final class DefaultBotHandlers {
 
     static func addHandlers(app: Vapor.Application, bot: TGBotPrtcl) {
         defaultHandler(app: app, bot: bot)
-        commandPingHandler(app: app, bot: bot)
+        commandStartHandler(app: app, bot: bot)
         commandAddAdmin(app: app, bot: bot)
         commandShowButtonsHandler(app: app, bot: bot)
         buttonsActionHandler(app: app, bot: bot)
@@ -31,12 +31,21 @@ final class DefaultBotHandlers {
     }
 
     /// add handler for command "/ping"
-    private static func commandPingHandler(app: Vapor.Application, bot: TGBotPrtcl) {
-        let handler = TGCommandHandler(commands: ["/start"]) { update, bot in
-         
-            
-            try update.message?.reply(text: "u in",  bot: bot)
+    private static func commandStartHandler(app: Vapor.Application, bot: TGBotPrtcl) {
+        let  handler = TGCommandHandler(commands: ["/start"]) { update, bot in
+            //переменная с айди телеги
+            let senderId =  update.message?.from?.id
+            //создаю переменную в которой обращаюсь к базе с игроками, фильтрую по полю айди, сравниваю сколько таких совпадений
+            let checkExistUser = try await Players.query(on: database).filter(\.$tgId == senderId ).count()
+           if checkExistUser == 1 { try update.message?.reply(text: "u in",  bot: bot)
+           }
+                else {
+                    update.message?.reply(text: "go fuck urself imposter",  bot: bot)
                 }
+            }
+           
+                
+                
         bot.connection.dispatcher.add(handler)
     }
     
