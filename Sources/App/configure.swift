@@ -13,6 +13,7 @@ public func configure(_ app: Application) throws {
     try TGBot.shared.start()
     TGBot.log.logLevel = .error
     DefaultBotHandlers.addHandlers(app: app, bot: TGBot.shared)
+    TeamHandlers.addHandlers(app: app, bot: TGBot.shared)
     // uncomment to serve files from /Public folder
     // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
@@ -61,7 +62,7 @@ public func configure(_ app: Application) throws {
     
      
 }
-// создаю вручную админа
+
 func addAdmin(_ app: Application)async throws {
     print(3)
     // использую расширение для стринг
