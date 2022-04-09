@@ -5,7 +5,7 @@ import Vapor
 
 
 
-final class Team: Model {
+final class Team: Model, Content {
     static let schema = "teams"
     
     @ID(key: .id)
@@ -24,8 +24,7 @@ final class Team: Model {
     @Timestamp(key: .updatedAt, on: .update)
     var updatedAt: Date?
     
-    @Timestamp(key: .deletedAt, on: .delete)
-    var deletedAt: Date?
+  
     
     init() { }
     
@@ -39,6 +38,9 @@ final class Team: Model {
         }
     
     
-    
+    init(Input:TeamInput) {
+        self.teamName = input.teamName
+        self.sex = input.gender
+    }
     
 }

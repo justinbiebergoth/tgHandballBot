@@ -13,8 +13,8 @@ struct TeamMigration: AsyncMigration {
         .id()
         .field(.teamName, .string, .required).unique(on: .sex, .teamName)
         .field(.sex, gender, .required)
+        .field(.createdAt, .datetime)
         .field(.updatedAt, .datetime)
-        .field(.deletedAt, .datetime)
         .create()
     }
 
