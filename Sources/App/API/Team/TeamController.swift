@@ -50,12 +50,8 @@ class TeamController {
         if let name = input.teamName {
             team.teamName = name
         }
-        
         try await team.save(on: req.db)
-        
         return .ok
-        
-        
         
  }
     func createTeam(_ req: Request) async throws -> HTTPStatus {
