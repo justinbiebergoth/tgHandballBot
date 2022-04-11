@@ -10,7 +10,7 @@ WORKDIR /build
 COPY ./Package.* ./
 RUN swift package resolve
 COPY . .
-RUN swift build --enable-test-discovery -c release -Xswiftc -g
+RUN swift build --enable-test-discovery -c debug -Xswiftc -g
 
 # Run image
 FROM ubuntu:20.04
@@ -32,8 +32,8 @@ RUN apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get -qq install \
           uuid-dev \
           zlib1g-dev
 WORKDIR /run
-COPY --from=build /build/.build/release /run
+COPY --from=build /build/.build/debug /run
 COPY --from=build /usr/lib/swift/ /usr/lib/swift/
 #COPY --from=build /build/Public /run/Public
 COPY --from=build /build/logs /run/logs
-ENTRYPOINT [“./Run]
+ENTRYPOINT ["./Run"]
