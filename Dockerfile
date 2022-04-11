@@ -1,7 +1,7 @@
 # ================================
 # Build image
 # ================================
-FROM swift:latest as build
+FROM swift:focal as build
 
 
 RUN mkdir /root/.ssh/
@@ -13,20 +13,23 @@ COPY . .
 RUN swift build --enable-test-discovery -c release -Xswiftc -g
 
 # Run image
-FROM ubuntu:18.04
-RUN apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+FROM ubuntu:20.04
+RUN apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get install \
           binutils \
           git \
+          gnupg2 \
           libc6-dev \
           libcurl4 \
           libedit2 \
-          libgcc-5-dev \
+          libgcc-9-dev \
           libpython2.7 \
           libsqlite3-0 \
-          libstdc++-5-dev \
+          libstdc++-9-dev \
           libxml2 \
+          libz3-dev \
           pkg-config \
           tzdata \
+          uuid-dev \
           zlib1g-dev
 WORKDIR /run
 COPY --from=build /build/.build/release /run
