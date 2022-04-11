@@ -14,7 +14,7 @@ RUN swift build --enable-test-discovery -c release -Xswiftc -g
 
 # Run image
 FROM ubuntu:20.04
-RUN apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get install \
+RUN apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get -qq install \
           binutils \
           git \
           gnupg2 \
