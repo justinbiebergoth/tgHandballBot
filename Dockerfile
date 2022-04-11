@@ -35,5 +35,4 @@ WORKDIR /run
 COPY --from=build /build/.build/debug /run
 COPY --from=build /usr/lib/swift/ /usr/lib/swift/
 #COPY --from=build /build/Public /run/Public
-COPY --from=build /build/logs /run/logs
 ENTRYPOINT ["./Run"]
