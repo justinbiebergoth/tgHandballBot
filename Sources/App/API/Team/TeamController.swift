@@ -56,7 +56,7 @@ class TeamController {
  }
     func createTeam(_ req: Request) async throws -> HTTPStatus {
         let input = try req.content.decode(TeamInput.self)
-        let team = Team(Input: input)
+        let team = Team(input: input)
         try await team.save(on: req.db)
         
         return .ok

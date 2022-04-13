@@ -38,9 +38,9 @@ final class Team: Model, Content {
         }
     
     
-    init(Input:TeamInput) {
-        self.teamName = Input.teamName
-        self.sex = Input.gender
+    init(input:TeamInput) {
+        self.teamName = input.teamName
+        self.sex = input.gender
     }
     
 }

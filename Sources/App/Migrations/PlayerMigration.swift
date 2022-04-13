@@ -11,8 +11,8 @@ struct PlayerMigration: AsyncMigration {
         try await database.schema("players")
         
             .id()
-            .field(.tgName, .string, .required)
-            .field(.tgId, .int64, .required).unique(on: .tgId)
+            .field(.tgName, .string, .required )
+            .field(.tgId, .int64, .required ).unique(on: .tgId)
             .field(.sex, gender, .required)
             .field(.role, role, .required)
             .field(.playerName, .string, .required )
@@ -20,7 +20,6 @@ struct PlayerMigration: AsyncMigration {
             .field(.team, .uuid, .references(Team.schema, .id))
             .field(.createdAt, .datetime)
             .field(.updatedAt, .datetime)
-            .field(.deletedAt, .datetime)
             .create()
                 
         

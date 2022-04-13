@@ -5,7 +5,7 @@ import Vapor
 
 
 
-final class Player: Model {
+final class Player: Model, Content  {
     static let schema = "players"
     
     @ID(key: .id)
@@ -15,8 +15,8 @@ final class Player: Model {
     var tgId: Int64
     
     
-    @Field(key: .tgName)
-    var tgName: String
+    @OptionalField(key: .tgName)
+    var tgName: String?
     
     @Enum(key: .sex)
     var sex : Gender
@@ -41,8 +41,7 @@ final class Player: Model {
     @Timestamp(key: .updatedAt, on: .update)
     var updatedAt: Date?
     
-    @Timestamp(key: .deletedAt, on: .delete)
-    var deletedAt: Date?
+    
     
     @Siblings(through: EventPlayer.self, from: \.$player, to: \.$event)
         public var events: [Event]
@@ -57,7 +56,7 @@ final class Player: Model {
             dateOfB: Date?,
             team: Team.IDValue?
             
-        ) {
+            ) {
             self.tgName = tgName
             self.tgId = tgId
             self.sex = sex
@@ -66,6 +65,18 @@ final class Player: Model {
             self.dateOfB = dateOfB
             self.$team.id = team
         }
+    init(input:PlayerInput) {
+        self.tgName = input.tgName
+                self.tgId = input.tgId
+                self.sex = input.sex
+                self.role = input.role
+                self.playerName = input.playerName
+                self.dateOfB = input.dateOfB.stringToDate()
+        print(input.dateOfB)
+        print(input.dateOfB.stringToDate())
+                self.$team.id = input.team
+    }
+    
     
 }
 

@@ -1,7 +1,7 @@
 import Fluent
 import Vapor
 
-final class Place: Model {
+final class Place: Model, Content{
     static let schema = "places"
     
     
@@ -50,5 +50,12 @@ final class Place: Model {
             self.latitude = latitude
             self.longitude = longitude
         }
+    init(input:PlaceInput) {
+                self.name = input.name
+                self.address = input.address
+                self.latitude = input.latitude
+                self.longitude = input.longitude
+    }
+    
         
 }
