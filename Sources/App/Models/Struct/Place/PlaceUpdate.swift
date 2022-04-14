@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import Vapor
+import Fluent
+
+struct PlaceUpdate: Content{
+    
+    var name: String?
+    var address: String?
+    var longitude: Double?
+    var latitude: Double?
+    
+    
+}
