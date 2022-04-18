@@ -3,7 +3,7 @@ import Vapor
 
 
 
-final class Event: Model {
+final class Event: Model, Content {
     static let schema = "events"
     
     @ID(key: .id)
@@ -46,4 +46,11 @@ final class Event: Model {
             self.$place.id  = try place.requireID()
             self.eventDate = eventDate
         }
+    init(input:EventInput) {
+                self.sex = input.sex
+                self.$place.id = input.place
+                self.eventDate = input.eventDate
+        
+    }
+    
 }

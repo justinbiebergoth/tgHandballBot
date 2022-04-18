@@ -66,15 +66,15 @@ final class Player: Model, Content  {
             self.$team.id = team
         }
     init(input:PlayerInput) {
-        self.tgName = input.tgName
-                self.tgId = input.tgId
-                self.sex = input.sex
-                self.role = input.role
-                self.playerName = input.playerName
-                self.dateOfB = input.dateOfB.stringToDate()
-        print(input.dateOfB)
-        print(input.dateOfB.stringToDate())
-                self.$team.id = input.team
+            self.tgName = input.tgName
+            self.tgId = input.tgId
+            self.sex = input.sex
+            self.role = input.role
+            self.playerName = input.playerName
+            self.dateOfB = input.dateOfB.stringToDate()
+                    print(input.dateOfB)
+                    print(input.dateOfB.stringToDate())
+            self.$team.id = input.team
     }
     
     
