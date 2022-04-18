@@ -3,7 +3,7 @@ import Vapor
 
 
 enum Gender: String, Codable {
-    case female, male
+    case female, male, all
 }
 
 enum EventType: String, Codable {

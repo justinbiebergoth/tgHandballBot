@@ -7,7 +7,7 @@ func routes(_ app: Application) throws {
     TeamRouter(api)
     PlayerRouter(api)
     PlaceRouter(api)
-    
+    EventRouter(api)
 
     try app.register(collection: TodoController())
 }
